@@ -1,0 +1,87 @@
+//double linked list implementation;
+#include<stdio.h>
+#include<stdlib.h>
+void insertbeg();
+void display();
+void insertend();
+void insertpos();
+	struct node{
+	int data;
+	struct node *prev;
+	struct node *next;
+};
+struct node *head=0,*newnode,*temp,*end;
+	int main(){
+		int n,i;
+	printf("Enter the size of an table\n");
+	scanf("%d",&n);
+	for(i=0;i<n;i++){
+	newnode=(struct node*)malloc(sizeof(struct node));
+printf("Enter the data to be inserted\n");
+scanf("%d",&newnode->data);	
+newnode->prev=0;
+newnode->next=0;	
+if(head==0){
+	head=temp=newnode;
+}	
+else{
+	temp->next=newnode;
+	newnode->prev=temp;
+	temp=newnode;
+}
+	}
+insertbeg();
+insertend();
+insertpos();
+display();
+}
+void insertbeg(){
+int x;
+newnode=(struct node*)malloc(sizeof(struct node));
+printf("Enter the data to be inserted at the beginning\n");
+scanf("%d",&x);
+newnode->data=x;
+head->prev=newnode;
+newnode->next=head;
+head=newnode;	
+}
+void display(){
+	temp=head;
+while(temp!=0){
+	printf("the array are %d \n",temp->data);
+	temp=temp->next;
+}
+}
+void insertend(){
+int x;
+newnode=(struct node*)malloc(sizeof(struct node));
+printf("Enter the data to be inserted at the end\n");
+scanf("%d",&x);
+newnode->data=x;
+temp->next=newnode;	
+newnode->prev=temp;
+temp=newnode;
+}
+void insertpos(){
+	end=head;
+int pos,i=1,x,n;
+printf("Enter the position to be inserted\n");
+scanf("%d",&pos);
+if(pos==1){
+	insertbeg();
+}
+else{
+newnode=(struct node*)malloc(sizeof(struct node));
+printf("Enter the data to be inserted at the end\n");
+scanf("%d",&x);
+newnode->data=x;
+while(i<pos-1){
+end=end->next;
+i++;	
+}	
+newnode->prev=end;
+newnode->next=end->next;
+end->next=newnode;
+newnode->next->prev=newnode;
+}	
+}

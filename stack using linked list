@@ -1,0 +1,84 @@
+//stack using link list
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+int data;
+struct node*link;
+};
+struct node*top=0;
+void push(int item);
+void display();
+void peek();
+void pop();
+int main()
+{
+int choice,item;
+while(1)
+{
+printf("\n1.insert\n 2.display\n 3.delete\n 4.peek\n 5.exit\n");
+printf("enter your choice\n");
+scanf("%d", &choice);
+switch(choice)
+{
+case 1:printf("enter the item to be inserted");
+       scanf("%d", &item);
+       push(item);
+       break;
+case 2:display();
+       break;
+case 3:pop();
+       break;
+case 4:peek();
+       break;
+case 5:exit(0);
+       break;
+default:printf("wrong choice");	   	   		
+}
+}
+while(choice!=0);
+}
+void push(int item)
+{
+struct node*ptr;
+ptr=(struct node*)malloc(sizeof(struct node));
+ptr->data=item;
+ptr->link=top;
+top=ptr;
+}
+void display()
+{
+ struct node*temp;	
+temp=top;   
+while(temp!=NULL)
+{
+printf("\t%d", temp->data);
+temp=temp->link;
+}
+}
+void peek()
+{
+if(top==NULL)
+{
+printf("stack is underflow");
+}
+else
+{
+printf("top element is %d", top->data);
+}
+}
+void pop()
+{
+struct node*temp;	
+temp=top;
+if(top==NULL)
+{
+printf("stack is underflow");
+}
+else
+{
+printf("%d", top->data);
+top=top->link;
+free(temp);
+}
+}

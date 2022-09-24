@@ -1,0 +1,84 @@
+Program in c++ 
+#include<iostream>
+#include<cstdio>
+#define max 3
+using namespace std;
+class stack{
+	int top;
+	int st[max];
+	int item;
+	public:
+	void push();
+	void pop();
+	void traverse();
+	stack(){
+		top=-1;
+	}
+	};
+	int main(){
+		int choice;
+		stack s;
+		char c;
+		do{
+		cout<<"1.for push "<<endl;
+		cout<<"2.for pop "<<endl;
+		cout<<"3. for traerse "<<endl;
+		
+		cout<<"enter the choice"<<endl;
+		cin>>choice;
+		switch(choice){
+			case 1:
+			s.push();
+			break;
+			case 2:
+			s.pop();
+			break;
+			case 3:
+		    s.traverse();
+		    break;
+		    default:
+		    cout<<"what is this ?"<<endl;
+			}
+		cout<<" do you wish to continue : y/n"<<endl;
+		fflush(stdin);
+	cin>>c;
+		}
+	while(c=='y'||c=='Y');
+	}
+	void stack::push(){
+		cout<<"Enter the element"<<endl;
+		cin>>item;
+		if(top==max-1)
+		{
+			cout<<"over flow cannot insert"<<endl;
+			
+			}
+		else{
+			top=top+1;
+			st[top]=item;
+			}
+		}
+		void stack::pop(){
+			if(top==-1){
+				cout<<"under flow"<<endl;
+				}
+			else{
+				item=st[top];
+				top=top-1;
+				cout<<" the value returned is "<<item;
+				}
+			
+			}
+			void stack::traverse(){
+				if(top==-1){
+					cout<<"no item to traverse"<<endl;
+					
+					}
+				else {
+					cout<<"traverse begin"<<endl;
+					for(int i=0;i<top+1;i++){
+						cout<<" , "<<st[i];
+						}
+					
+					}
+				}

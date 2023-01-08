@@ -1,0 +1,35 @@
+#include<stdio.h>
+int main()
+{
+    int a[100];
+
+    int i, j, k, l, n, temp, flag;
+    printf("enter the size of array\n");
+    scanf("%d", &n);
+    printf("please enter the element of array  ");
+    for (l = 0; l < n; l++)
+    {
+
+        scanf("%d", &a[l]);
+    }
+     for(i=1;i<n;i++)
+     {
+        temp= a[i];
+        j=i-1;
+
+        while(j>=0 && a[j]>temp)
+        {
+            a[j+1]=a[j];
+            j--;
+        }
+
+        a[j+1]=temp;
+     }
+
+      for (k = 0; k < n; k++)
+    {
+
+        printf(" %d\t ", a[k]);
+    }
+    return 0;
+}
